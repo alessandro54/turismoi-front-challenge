@@ -2,10 +2,16 @@
   export let attributes,activities
   import flag from "country-code-emoji"
   import FaRegClock from 'svelte-icons/fa/FaRegClock.svelte'
-  const {name, principal_photo,avg_hours, dolar_price, country_iso} = attributes
+  const {name, principal_photo,avg_hours, dolar_price, country_iso,slug} = attributes
+
+  const handleClick=() => window.location.href= `https://turismoi.com/es/peru/tours/${slug}`
+
 </script>
 
-<div class="shadow-xl border border-gray-300 rounded-t-2xl xl:rounded-t-none xl:rounded-l-2xl flex flex-col xl:flex-row justify-start mt-5 mb-10 hover:shadow-2xl transition">
+<div
+  class="shadow-xl border border-gray-300 rounded-t-2xl xl:rounded-t-none xl:rounded-l-2xl flex flex-col xl:flex-row justify-start mt-5 mb-10 hover:shadow-2xl transition cursor-pointer"
+  on:click={handleClick}
+>
   <!-- Tour Photo -->
   <section class="w-full h-60 xl:w-1/2 xl:h-full">
     <img class="w-full h-full object-cover rounded-t-2xl xl:rounded-t-none xl:rounded-l-2xl"
