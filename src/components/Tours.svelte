@@ -1,11 +1,12 @@
 <script>
   import Tour from "./Tour.svelte";
   import {fetchTours} from "../../scripts/API";
+
   const promise = fetchTours();
-  const findActivities = (relationships,included) => {
-    return relationships.map((relation) => {
-      return included.find(e => e.id === relation.id).attributes
-    })
+
+  const getActivities = (relationships, included) => {
+    return relationships.map((relation) => (
+      included.find(activity => activity.id === relation.id).attributes))
   }
 </script>
 
@@ -15,8 +16,9 @@
   {:then {data,included}}
     {#each data as tour}
       <Tour
-        {...tour}
-        activities = {findActivities(tour["relationships"]["activities"]["data"],included)}
+        id={tour.id}
+        attributes={tour.attributes}
+        activities = {getActivities(tour.relationships.activities.data,included)}
       />
     {/each}
   {:catch error}
