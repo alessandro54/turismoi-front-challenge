@@ -1,16 +1,19 @@
 <script>
-	import Tours from "./components/Tours.svelte";
+	import Tours from "./components/tours/Tours.svelte";
 	import {fetchTours} from "../scripts/API";
+	import Error from "./components/Error.svelte";
+	import Loading from "./components/Loading.svelte";
+
 	const promise = fetchTours();
 </script>
 
 <main>
 	{#await promise}
-		<p>...loading</p>
+		<Loading/>
 	{:then {data,included}}
 		<Tours data={data} included={included}/>
 	{:catch error}
-		<p>There was an error!</p>
+		<Error data={error}/>
 	{/await}
 </main>
 
