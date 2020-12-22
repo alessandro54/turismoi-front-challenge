@@ -1,7 +1,6 @@
 <script>
-  export let id,type,attributes,relationships
+  export let id,type,attributes,relationships,activities
 </script>
 
 <div>
-  <h1>{attributes.name}</h1>
 </div>
