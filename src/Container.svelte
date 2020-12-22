@@ -1,5 +1,6 @@
 <script>
-
+  const publicToken = PUBLIC_TOKEN
+  console.log(publicToken)
 </script>
 
 <main>
